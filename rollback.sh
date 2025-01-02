@@ -11,9 +11,9 @@ fi
 
 TARGET_DATETIME="$1"
 
-# Use grep to find the block and sed to extract the hash
-BLOCK=$(grep -A 1 "^## $TARGET_DATETIME$" ROLLBACK_POINTS.md)
-COMMIT_HASH=$(echo "$BLOCK" | grep "Commit Hash:" | cut -d' ' -f3)
+# Find the section starting with the datetime and extract the hash
+SECTION=$(grep -A 2 "^## $TARGET_DATETIME$" ROLLBACK_POINTS.md)
+COMMIT_HASH=$(echo "$SECTION" | grep "^Commit Hash:" | cut -d' ' -f3)
 
 if [ -z "$COMMIT_HASH" ]; then
     echo "No commit hash found for datetime: $TARGET_DATETIME"
@@ -28,9 +28,10 @@ read -p "Are you sure you want to rollback to this commit? (y/N) " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    # Perform the rollback
+    # Perform the rollback and cleanup
     git reset --hard "$COMMIT_HASH"
-    echo "Successfully rolled back to commit from $TARGET_DATETIME"
+    git gc --prune=now
+    echo "Successfully rolled back to commit from $TARGET_DATETIME and cleaned up repository"
 else
     echo "Rollback cancelled"
 fi
