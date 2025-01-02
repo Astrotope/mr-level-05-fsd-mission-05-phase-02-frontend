@@ -1,0 +1,58 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.card {
+  border-radius: $border-radius;
+  background-color: var(--card-background);
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+
+  // Variants
+  &.elevated {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &.outlined {
+    border: 1px solid var(--border-color);
+    
+    &:hover {
+      border-color: var(--primary-color);
+    }
+  }
+
+  &.filled {
+    background-color: rgba(0, 0, 0, 0.04);
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &.transparent {
+    background-color: transparent;
+  }
+
+  // Padding
+  &.padding-none { padding: 0; }
+  &.padding-sm { padding: var(--spacing-sm); }
+  &.padding-md { padding: var(--spacing-md); }
+  &.padding-lg { padding: var(--spacing-lg); }
+
+  // Hoverable
+  &.hoverable {
+    cursor: pointer;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  // Responsive behavior
+  @include respond-to('sm') {
+    border-radius: $border-radius-lg;
+  }
+}

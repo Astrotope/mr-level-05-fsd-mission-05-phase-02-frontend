@@ -1,0 +1,52 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--card-background);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.nav {
+  @include flex(row, space-between, center);
+  height: 64px;
+
+  @include respond-to('sm') {
+    height: 56px;
+  }
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-xl) 0;
+}
+
+.footer {
+  background-color: var(--card-background);
+  border-top: 1px solid var(--border-color);
+  padding: var(--spacing-xl) 0;
+  margin-top: auto;
+  transition: background-color 0.2s ease;
+}
+
+.footerContent {
+  @include flex(row, space-between, center);
+  color: var(--text-color);
+  
+  @include respond-to('sm') {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+}

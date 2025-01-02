@@ -1,0 +1,72 @@
+@use 'sass:map';
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.container {
+  display: flex;
+
+  // Justify Content
+  &.justify-start { justify-content: flex-start; }
+  &.justify-center { justify-content: center; }
+  &.justify-end { justify-content: flex-end; }
+  &.justify-between { justify-content: space-between; }
+  &.justify-around { justify-content: space-around; }
+  &.justify-evenly { justify-content: space-evenly; }
+
+  // Align Items
+  &.align-start { align-items: flex-start; }
+  &.align-center { align-items: center; }
+  &.align-end { align-items: flex-end; }
+  &.align-stretch { align-items: stretch; }
+  &.align-baseline { align-items: baseline; }
+
+  // Direction
+  &.direction-row { flex-direction: row; }
+  &.direction-column { flex-direction: column; }
+  &.direction-row-reverse { flex-direction: row-reverse; }
+  &.direction-column-reverse { flex-direction: column-reverse; }
+
+  // Wrap
+  &.wrap-nowrap { flex-wrap: nowrap; }
+  &.wrap-wrap { flex-wrap: wrap; }
+  &.wrap-wrap-reverse { flex-wrap: wrap-reverse; }
+
+  // Gap
+  &.gap-none { gap: 0; }
+  &.gap-xs { gap: var(--spacing-xs); }
+  &.gap-sm { gap: var(--spacing-sm); }
+  &.gap-md { gap: var(--spacing-md); }
+  &.gap-lg { gap: var(--spacing-lg); }
+  &.gap-xl { gap: var(--spacing-xl); }
+
+  // Max Width
+  &.max-sm { max-width: map.get($breakpoints, 'sm'); margin: 0 auto; }
+  &.max-md { max-width: map.get($breakpoints, 'md'); margin: 0 auto; }
+  &.max-lg { max-width: map.get($breakpoints, 'lg'); margin: 0 auto; }
+  &.max-xl { max-width: map.get($breakpoints, 'xl'); margin: 0 auto; }
+  &.max-full { width: 100%; }
+
+  // Padding
+  &.padding-none { padding: 0; }
+  &.padding-xs { padding: var(--spacing-xs); }
+  &.padding-sm { padding: var(--spacing-sm); }
+  &.padding-md { padding: var(--spacing-md); }
+  &.padding-lg { padding: var(--spacing-lg); }
+  &.padding-xl { padding: var(--spacing-xl); }
+
+  // Responsive behavior
+  @include respond-to('sm') {
+    &.direction-row-sm { flex-direction: row; }
+    &.direction-column-sm { flex-direction: column; }
+  }
+
+  @include respond-to('md') {
+    &.direction-row-md { flex-direction: row; }
+    &.direction-column-md { flex-direction: column; }
+  }
+
+  @include respond-to('lg') {
+    &.direction-row-lg { flex-direction: row; }
+    &.direction-column-lg { flex-direction: column; }
+  }
+}

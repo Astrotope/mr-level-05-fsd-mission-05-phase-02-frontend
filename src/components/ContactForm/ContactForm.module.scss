@@ -1,0 +1,9 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) 0;
+}

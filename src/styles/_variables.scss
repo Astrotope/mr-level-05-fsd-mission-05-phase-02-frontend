@@ -1,0 +1,65 @@
+:root {
+  // Light theme colors
+  --primary-color: #ff5e00;
+  --primary-color-dark: #0056b3;
+  --secondary-color: #0044a3;
+  --secondary-color-dark: #545b62;
+  --text-color: #333;
+  --text-color-secondary: #e9ecef;
+  --accent-color: #89c106;
+  --background-color: #f3f4fc;
+  --card-background: #fff;
+  --border-color: rgba(0, 0, 0, 0.12);
+  
+  // Font weights
+  --font-weight-button: 700;
+  --font-weight-label: 700;
+
+  // Spacing
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+}
+
+// Dark theme colors
+[data-theme='dark'] {
+  --primary-color: #ff5e00;
+  --primary-color-dark: #339af0;
+  --secondary-color: #5ca0ff;
+  --secondary-color-dark: #868e96;
+  --text-color: #e9ecef;
+  --text-color-secondary: #333;
+  --accent-color: #c1f93e;
+  --background-color: #03040c;
+  --card-background: #5ca0ff1a;
+  --border-color: rgba(255, 255, 255, 0.12);
+}
+
+// Breakpoints
+$breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+);
+
+// Border
+$border-radius: 8px;
+$border-radius-lg: 12px;
+
+// Typography
+$font-sizes: (
+  'none': 0rem,
+  'xxxxs': 0.5rem,
+  'xxxs': 0.5625rem,
+  'xxs': 0.625rem,
+  'xs': 0.75rem,
+  'sm': 0.875rem,
+  'base': 1rem,
+  'lg': 1.125rem,
+  'xl': 1.25rem,
+  'xxl': 1.5rem
+);

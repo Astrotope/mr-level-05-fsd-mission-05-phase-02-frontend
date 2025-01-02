@@ -1,0 +1,71 @@
+@use 'sass:map';
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: fit-content;
+
+  &.fullWidth {
+    width: 100%;
+  }
+}
+
+.label {
+  font-size: map.get($font-sizes, 'base');
+  font-weight: var(--font-weight-label);
+  color: var(--text-color);
+}
+
+%input-base {
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius;
+  font-size: map.get($font-sizes, 'base');
+  transition: all 0.2s ease;
+  width: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: var(--secondary-color);
+    opacity: 0.8;
+  }
+
+  &.error {
+    border-color: #dc3545;
+    
+    &:focus {
+      box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+    }
+  }
+}
+
+.input {
+  @extend %input-base;
+  height: 40px;
+}
+
+.textarea {
+  @extend %input-base;
+  min-height: 100px;
+  resize: vertical;
+}
+
+.errorText {
+  color: #dc3545;
+  font-size: map.get($font-sizes, 'sm');
+}

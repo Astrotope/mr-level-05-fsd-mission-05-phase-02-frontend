@@ -1,0 +1,218 @@
+@use 'sass:map';
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.mainContainer {
+  width: 100%;
+}
+
+.hero {
+  min-height: 60vh;
+  @include flex(column, center, center);
+  text-align: left;
+  padding: var(--spacing-xl) 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-dark) 100%);
+  color: white;
+  border-radius: $border-radius;
+  margin-bottom: var(--spacing-xl);
+
+  // Responsive behavior
+  @include respond-to('sm') {
+    border-radius: $border-radius-lg;
+  }
+
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroCard {
+  flex: 1;
+  min-width: 250px;
+  /*max-width: calc(33.333% - var(--spacing-md));*/
+}
+
+.title_small {
+  font-size: 1rem;
+  color: var(--accent-color);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: var(--spacing-sm);
+  padding-left: 3px;
+  @include respond-to('sm') {
+    font-size: 1.33rem;
+  }
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: var(--spacing-sm);
+
+  @include respond-to('sm') {
+    font-size: 4rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: var(--spacing-sm);
+
+  @include respond-to('sm') {
+    font-size: 1.995rem;
+  }
+}
+
+.heroButton {
+  margin-top: var(--spacing-lg);
+  align-self: flex-start;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  transition: opacity 0.2s ease;
+  align-self: center;
+  
+  &.loading {
+    opacity: 0;
+  }
+}
+
+.section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.aboutCard {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+
+  // Add invisible flex items to ensure last row aligns left
+  &::after {
+    content: "";
+    flex: auto;
+    max-width: var(--skill-card-width);
+    visibility: hidden;
+  }
+}
+
+.skillCard {
+  flex: 1;
+  min-width: 250px;
+  max-width: calc(33.333% - var(--spacing-md));
+
+  h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--accent-color);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: var(--spacing-xs);
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.projectCard {
+  flex: 1;
+  min-width: 300px;
+  max-width: calc(50% - var(--spacing-lg));
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  div > h3 {
+    color: var(--accent-color)
+  }
+}
+
+.projectContent {
+  padding: var(--spacing-md);
+
+  h3 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+    opacity: 0.8;
+  }
+}
+
+.contactCard {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contactText {
+  font-size: 1.25rem;
+  text-align: center;
+  max-width: 600px;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.socialLinks {
+  margin-top: var(--spacing-lg);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
+  @include respond-to('sm') {
+    flex-direction: column;
+    width: 100%;
+    
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.themeImage {
+  width: 100%;
+  height: auto;
+  transition: opacity 0.2s ease;
+  
+  &.loading {
+    opacity: 0;
+  }
+}
