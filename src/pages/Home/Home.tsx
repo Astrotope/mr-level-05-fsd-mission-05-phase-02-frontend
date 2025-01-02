@@ -2,11 +2,9 @@ import { Container } from '@/components/Container';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { ContactForm } from '@/components/ContactForm/ContactForm';
-import { useTheme } from '@/context/ThemeContext';
 import styles from './Home.module.scss';
 
 export const Home = () => {
-  const { theme } = useTheme();
 
   return (
     <Container 
@@ -31,7 +29,7 @@ export const Home = () => {
           </Card>
           <Card variant="transparent" className={styles.heroCard}>
             <img 
-                  src={`images/avatar-framed-${theme}.png`} 
+                  src={`images/avatar-framed-light.png`} 
                   alt="Profile Avatar" 
                   className={styles.heroImage}
             />
@@ -146,7 +144,7 @@ export const Home = () => {
             {/* Add project cards here */}
             <Card variant="outlined" hoverable className={styles.projectCard}>
               <img 
-                src={`images/avatar-framed-${theme}.png`} 
+                src={`images/avatar-framed-light.png`} 
                 alt="Profile Avatar" 
                 className={styles.themeImage}
               />
@@ -161,7 +159,7 @@ export const Home = () => {
             </Card>
             <Card variant="outlined" hoverable className={styles.projectCard}>
               <img 
-                src={`images/avatar-framed-${theme}.png`} 
+                src={`images/avatar-framed-light.png`} 
                 alt="Profile Avatar" 
                 className={styles.themeImage}
               />

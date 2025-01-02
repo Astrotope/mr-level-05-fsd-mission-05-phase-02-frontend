@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Container } from '@/components/Container';
-import { ThemeToggle } from '@/components/ThemeToggle/ThemeToggle';
 import styles from './MainLayout.module.scss';
 
 interface MainLayoutProps {
@@ -13,7 +12,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       <header className={styles.header}>
         <Container maxWidth="lg" padding="md">
           <nav className={styles.nav}>
-            <ThemeToggle />
           </nav>
         </Container>
       </header>
