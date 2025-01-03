@@ -2,6 +2,7 @@ import { Container } from '@/components/Container';
 import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { ContactForm } from '@/components/ContactForm/ContactForm';
+import { Map } from '@/components/Map/Map';
 import styles from './Home.module.scss';
 
 export const Home = () => {
@@ -16,6 +17,14 @@ export const Home = () => {
       wrap="wrap"
       className={styles.mainContainer}
     >
+
+      {/* Map Section */}
+      <section className={styles.section}>
+        <Container direction="row" gap="none" wrap="wrap" alignItems="center" className={styles.mapContent} padding="none">
+          <Map className={styles.map} />
+        </Container>
+      </section>
+
       {/* Hero Section */}
       <section className={styles.hero}>
         <Container direction="row" gap="none" wrap="wrap" alignItems="center" className={styles.heroContent} padding="lg">

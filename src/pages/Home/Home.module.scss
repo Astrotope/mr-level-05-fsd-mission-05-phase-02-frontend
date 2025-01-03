@@ -4,6 +4,9 @@
 
 .mainContainer {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .hero {
@@ -26,6 +29,8 @@
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
+  width: 100%;
+  position: relative;
 }
 
 .heroCard {
@@ -79,6 +84,7 @@
   height: auto;
   transition: opacity 0.2s ease;
   align-self: center;
+  object-fit: cover;
   
   &.loading {
     opacity: 0;
@@ -87,6 +93,7 @@
 
 .section {
   margin-bottom: var(--spacing-xl);
+  width: 100%;
 }
 
 .sectionTitle {
@@ -215,4 +222,16 @@
   &.loading {
     opacity: 0;
   }
+}
+
+.mapContent {
+  width: 100%;
+  height: 400px;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
