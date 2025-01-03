@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 import { Container } from '@/components/Container';
+import { Button } from '@/components/Button';
+import { Icon } from '@/components/Icon';
 import styles from './MainLayout.module.scss';
 
 interface MainLayoutProps {
@@ -11,6 +13,13 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     <div className={styles.layout}>
       <header className={styles.header}>
         <Container as="div" className={styles.header} maxWidth="lg" padding="md">
+          <Icon 
+            icon="logo" 
+            width={32} 
+            height={32} 
+            className={styles.logo}
+          />
+          <Button variant="primary" size="small">Button</Button>
           <nav className={styles.nav}>
           </nav>
         </Container>

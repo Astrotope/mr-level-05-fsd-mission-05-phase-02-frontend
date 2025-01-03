@@ -50,3 +50,12 @@
     text-align: center;
   }
 }
+
+.logo {
+  fill: var(--primary-color-dark-orange); 
+  transition: fill 0.2s ease;
+  
+  &:hover {
+    fill: var(--primary-color-orange);
+  }
+}
