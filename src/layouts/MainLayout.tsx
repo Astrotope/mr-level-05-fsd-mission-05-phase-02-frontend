@@ -10,7 +10,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div className={styles.layout}>
       <header className={styles.header}>
-        <Container maxWidth="lg" padding="md">
+        <Container as="div" className={styles.header} maxWidth="lg" padding="md">
           <nav className={styles.nav}>
           </nav>
         </Container>

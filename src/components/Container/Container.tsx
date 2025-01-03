@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, ElementType } from 'react';
 import styles from './Container.module.scss';
 
 type JustifyContent = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
@@ -17,6 +17,7 @@ export interface ContainerProps {
   className?: string;
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
   padding?: Gap;
+  as?: ElementType;
 }
 
 export const Container = ({
@@ -29,9 +30,10 @@ export const Container = ({
   className = '',
   maxWidth,
   padding = 'none',
+  as: Element = 'div',
 }: ContainerProps) => {
   return (
-    <div
+    <Element
       className={`
         ${styles.container}
         ${styles[`justify-${justifyContent}`]}
@@ -45,6 +47,6 @@ export const Container = ({
       `}
     >
       {children}
-    </div>
+    </Element>
   );
 };
