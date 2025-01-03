@@ -19,6 +19,12 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             height={32} 
             className={styles.logo}
           />
+          <Icon 
+            icon="search" 
+            width={32} 
+            height={32} 
+            className={styles.logo}
+          />
           <Button variant="primary" size="small">Button</Button>
           <nav className={styles.nav}>
           </nav>

@@ -2,13 +2,13 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files
+# Copy package files first
 COPY package*.json ./
 
-# Clean install dependencies including devDependencies
-RUN npm ci
+# Install dependencies with force to handle dependency conflicts
+RUN npm install #--force
 
-# Copy source code
+# Copy the rest of the source code AFTER installing dependencies
 COPY . .
 
 # Expose port 5173 (Vite's default port)

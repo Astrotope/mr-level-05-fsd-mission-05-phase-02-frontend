@@ -11,4 +11,8 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
+  optimizeDeps: {
+    include: ['react', 'react-dom'],
+  },
+  assetsInclude: ['**/*.svg'],
 })

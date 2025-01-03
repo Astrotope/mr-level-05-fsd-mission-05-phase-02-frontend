@@ -14,3 +14,7 @@ Commit Hash: e7e021b5185ce2f8584e925c0518f3c8642c85b4
 ## 2025-01-02T21:45:49+0000
 # removed theme system - now only using light theme CSS
 Commit Hash: 3c8465801ac5aa20bcc717879bfd0b0ae3e836f3
+
+## 2025-01-03T02:35:35+0000
+# added raw SVG support with re-writing of SVG width and height, in Icon component
+Commit Hash: fab65b14c7223f42808d42f13a4b48f20decb853
