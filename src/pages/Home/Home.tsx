@@ -3,6 +3,7 @@ import { Card } from '@/components/Card';
 import { Button } from '@/components/Button';
 import { ContactForm } from '@/components/ContactForm/ContactForm';
 import { Map } from '@/components/Map/Map';
+import { LocationInput } from '@/components/LocationInput/LocationInput';
 import styles from './Home.module.scss';
 
 export const Home = () => {
@@ -10,7 +11,6 @@ export const Home = () => {
   return (
     <Container 
       maxWidth="lg" 
-      padding="md" 
       direction="column"
       alignItems="center"
       justifyContent="start"
@@ -22,6 +22,7 @@ export const Home = () => {
       {/* Map Section */}
       <section className={styles.section}>
         <Container direction="row" gap="none" wrap="wrap" alignItems="center" className={styles.mapContent} padding="none">
+          <LocationInput />
           <Map className={styles.map} />
         </Container>
       </section>

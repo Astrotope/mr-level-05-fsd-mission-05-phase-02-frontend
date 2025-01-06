@@ -1,13 +1,16 @@
-import { MainLayout } from './layouts/MainLayout'
-import { Home } from './pages/Home/Home'
-import './styles/global.scss'
+import { MainLayout } from './layouts/MainLayout';
+import { Home } from './pages/Home/Home';
+import { LocationProvider } from './contexts/LocationContext';
+import './styles/global.scss';
 
 function App() {
   return (
-    <MainLayout>
-      <Home />
-    </MainLayout>
-  )
+    <LocationProvider>
+      <MainLayout>
+        <Home />
+      </MainLayout>
+    </LocationProvider>
+  );
 }
 
-export default App
+export default App;

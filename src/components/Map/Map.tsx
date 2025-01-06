@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
+import { useLocationContext } from '../../contexts/LocationContext';
 
 interface MapProps {
-  center?: { lat: number; lng: number };
-  zoom?: number;
   className?: string;
 }
 
@@ -12,39 +11,59 @@ const containerStyle = {
   height: '400px'
 };
 
-export const Map = ({ 
-  center = { lat: -36.8485, lng: 174.7633 }, // Default to Auckland
-  zoom = 12,
-  className 
-}: MapProps) => {
+const defaultCenter = { lat: -36.8485, lng: 174.7633 }; // Default to Auckland
+
+export const Map = ({ className }: MapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<google.maps.Map | null>(null);
+  const mapInstanceRef = useRef<google.maps.Map | null>(null);
+  const markerRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(null);
+  const { location } = useLocationContext();
 
   useEffect(() => {
     const loader = new Loader({
       apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-      version: "beta",  // Use beta for latest features
-      libraries: ["marker"]  // Include marker library for AdvancedMarkerElement
+      version: "beta",
+      libraries: ["marker"]
     });
 
     loader.load().then(() => {
-      if (mapRef.current && !map) {
+      if (mapRef.current && !mapInstanceRef.current) {
         const newMap = new google.maps.Map(mapRef.current, {
-          center,
-          zoom,
-          mapId: "YOUR_MAP_ID"  // Optional: Add if you want to use custom styling
+          center: location?.lat ? location : defaultCenter,
+          zoom: 12,
+          mapId: "YOUR_MAP_ID"  // Required for Advanced Markers
         });
 
-        const marker = new google.maps.marker.AdvancedMarkerElement({
-          position: center,
-          map: newMap,
-          title: "Auckland"  // Optional: Add a title for accessibility
-        });
+        mapInstanceRef.current = newMap;
 
-        setMap(newMap);
+        if (location?.lat) {
+          markerRef.current = new google.maps.marker.AdvancedMarkerElement({
+            position: location,
+            map: newMap,
+            title: location.address
+          });
+        }
       }
     });
-  }, [center, zoom, map]);
+  }, []);
+
+  // Update map when location changes
+  useEffect(() => {
+    if (mapInstanceRef.current && location?.lat) {
+      mapInstanceRef.current.panTo(location);
+      
+      // Update or create marker
+      if (markerRef.current) {
+        markerRef.current.position = location;
+      } else {
+        markerRef.current = new google.maps.marker.AdvancedMarkerElement({
+          position: location,
+          map: mapInstanceRef.current,
+          title: location.address
+        });
+      }
+    }
+  }, [location]);
 
   return (
     <div 
@@ -53,4 +72,4 @@ export const Map = ({
       style={containerStyle}
     />
   );
-}
+};

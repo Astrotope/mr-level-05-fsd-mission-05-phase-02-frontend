@@ -26,3 +26,7 @@ Commit Hash: 596db9e7205034b4b072dae7c5a53cd65713c07f
 ## 2025-01-03T08:24:20+0000
 # added google maps support, with a Map component
 Commit Hash: 5a6339f481ea4bce63ed7f30d36c6ef5d62850fe
+
+## 2025-01-06T05:59:27+0000
+# add rollback point before adding use location feature
+Commit Hash: 67f09f26276234664430faad49d39195573f0c1f
