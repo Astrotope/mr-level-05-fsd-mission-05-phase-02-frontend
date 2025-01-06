@@ -30,3 +30,7 @@ Commit Hash: 5a6339f481ea4bce63ed7f30d36c6ef5d62850fe
 ## 2025-01-06T05:59:27+0000
 # add rollback point before adding use location feature
 Commit Hash: 67f09f26276234664430faad49d39195573f0c1f
+
+## 2025-01-06T07:19:29+0000
+# add map location feature using geolocation or geocoding. Some TS type errors to resolve in prod. build. But dev. build working.
+Commit Hash: 77011f5104a3b4c97b83f9c0dbcdc9d8c22c1ce2

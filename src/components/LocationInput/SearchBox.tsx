@@ -57,11 +57,15 @@ export const SearchBox = () => {
         source: 'geocoding',
         address: result.results[0].formatted_address
       });
-    } catch (err) {
-      if (err.message.includes('not authorized')) {
-        setError('Google Maps API key is not configured correctly');
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        if (error.message.includes('not authorized')) {
+          setError('Google Maps API key is not configured correctly');
+        } else {
+          setError('Could not find this location. Please try a different search.');
+        }
       } else {
-        setError('Could not find this location. Please try a different search.');
+        setError('An unexpected error occurred');
       }
     } finally {
       setIsLoading(false);
@@ -82,7 +86,7 @@ export const SearchBox = () => {
       onBlur={() => handleSearch(searchValue)}
       label="Enter location or station name"
       disabled={isLoading}
-      error={error}
+      error={error || undefined}
       fullWidth
     />
   );
