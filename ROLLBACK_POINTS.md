@@ -22,3 +22,7 @@ Commit Hash: fab65b14c7223f42808d42f13a4b48f20decb853
 ## 2025-01-03T03:51:38+0000
 # added typescript compatible SVG support
 Commit Hash: 596db9e7205034b4b072dae7c5a53cd65713c07f
+
+## 2025-01-03T08:24:20+0000
+# added google maps support, with a Map component
+Commit Hash: 5a6339f481ea4bce63ed7f30d36c6ef5d62850fe

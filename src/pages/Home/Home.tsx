@@ -15,6 +15,7 @@ export const Home = () => {
       alignItems="center"
       justifyContent="start"
       wrap="wrap"
+      padding="none"
       className={styles.mainContainer}
     >
 
