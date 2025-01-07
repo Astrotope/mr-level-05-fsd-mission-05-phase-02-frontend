@@ -96,6 +96,30 @@
   width: 100%;
 }
 
+filter_search {
+  width: 100%;
+}
+
+.filter_search_content, .filter_search_tabs, .filter_search {
+  width: 100%;
+}
+
+.filter_search_controls_heading {
+  width: 100%;
+}
+
+.filter_search_controls_options button {
+  width: 150px;
+}
+
+.location_input {
+  width: 100%;
+}
+
+.location_input_content {
+  height: 200px;
+}
+
 .sectionTitle {
   font-size: 2rem;
   margin-bottom: var(--spacing-lg);
@@ -232,6 +256,13 @@
 .map {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.map_container {
+  width: 100%;
+  height: 100%;
+}
+
+.stations_overlay {
+  width: 100%;
 }

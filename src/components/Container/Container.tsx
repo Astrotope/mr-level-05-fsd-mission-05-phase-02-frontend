@@ -5,7 +5,7 @@ type JustifyContent = 'start' | 'center' | 'end' | 'between' | 'around' | 'evenl
 type AlignItems = 'start' | 'center' | 'end' | 'stretch' | 'baseline';
 type FlexDirection = 'row' | 'column' | 'row-reverse' | 'column-reverse';
 type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
-type Gap = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type Gap = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export interface ContainerProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ export interface ContainerProps {
   wrap?: FlexWrap;
   gap?: Gap;
   className?: string;
-  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'full';
   padding?: Gap;
   as?: ElementType;
 }
