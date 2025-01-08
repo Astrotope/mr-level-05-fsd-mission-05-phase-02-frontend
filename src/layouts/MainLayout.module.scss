@@ -67,6 +67,17 @@
 
 .footer_content {
   width: 100%; 
+  font-size: 14px;
+}
+
+.footer_menu h1 {
+  font-size: 20px;
+  color: var(--footer-menu-header);
+}
+
+.footer_menu a {
+  font-size: 17px;
+  color: var(--footer-menu-item);
 }
 
 .logo {

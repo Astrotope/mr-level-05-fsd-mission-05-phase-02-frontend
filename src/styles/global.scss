@@ -142,10 +142,24 @@ button a,
   min-height: 35px;
   min-width: 35px;
   justify-content: center;
-  margin-left: 20px;
   overflow: hidden;
   position: relative;
   width: 35px;
+}
+
+.button__circle_02 {
+  align-items: center;
+  background-color: var(--background-color);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 20px;
 }
 
 // Responsive Typography

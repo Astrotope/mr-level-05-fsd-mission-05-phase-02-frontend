@@ -42,3 +42,7 @@ Commit Hash: 3e0b2f94a333911a84cc32e02a6499c5e41e0dd3
 ## 2025-01-07T20:08:21+0000
 # save rollback point before changing UI component code.
 Commit Hash: cf4e5babda5a7a40e95e463c202e627ff4cc7d04
+
+## 2025-01-08T05:52:48+0000
+# halfway through UI build or frontend - rollback point.
+Commit Hash: c086325048f150d80ae54695c904102a1f14447d

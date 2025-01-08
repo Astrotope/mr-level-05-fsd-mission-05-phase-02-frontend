@@ -36,9 +36,7 @@ import { ReactNode, ButtonHTMLAttributes, useState } from 'react';
 import styles from './Button.module.scss';
 
 export type ButtonVariant = 
-  'primary' | 'secondary' | 'accent' | 'outline' | 'text' | 'nav' | 'use-location' |
-  'z-energy-variant-01' | 'z-energy-variant-02' | 
-  'z-energy-variant-03' | 'z-energy-variant-04' | 'z-energy-variant-05';  
+  'primary' | 'secondary' | 'accent' | 'outline' | 'text' | 'nav' | 'use-location' | 'social-icon' | 'z-energy-variant-01' | 'z-energy-variant-02' | 'z-energy-variant-03' | 'z-energy-variant-04' | 'z-energy-variant-05' | 'z-energy-variant-06' | 'z-energy-variant-07-left' | 'z-energy-variant-07-right' | 'locator_hours__button';  
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
