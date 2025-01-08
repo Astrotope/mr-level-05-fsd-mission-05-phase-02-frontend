@@ -7,10 +7,18 @@ import { useStationsContext, Station } from '@/contexts/StationsContext';
 export const StationsList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [visibleHours, setVisibleHours] = useState<{ [key: string]: boolean }>({});
   const { location } = useLocationContext();
   const { stations, setStations } = useStationsContext();
 
   const AUCKLAND_CENTER = { lat: -36.8509, lng: 174.7645 };
+
+  const toggleHours = (stationId: string) => {
+    setVisibleHours(prev => ({
+      ...prev,
+      [stationId]: !prev[stationId]
+    }));
+  };
 
   useEffect(() => {
     const fetchStations = async () => {
@@ -21,7 +29,7 @@ export const StationsList = () => {
 
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/stations/search?latitude=${currentLocation.lat}&longitude=${currentLocation.lng}&maxDistance=20000&limit=3`
+          `${import.meta.env.VITE_API_URL}/api/stations/search?latitude=${currentLocation.lat}&longitude=${currentLocation.lng}&maxDistance=100000&limit=3`
         );
 
         if (!response.ok) {
@@ -65,7 +73,10 @@ export const StationsList = () => {
             <Button
               variant="locator_hours__button"
               size="small"
-              className={`${styles.locator_hours__button} ${styles.h6} ${styles.locator_hours__button__open}`}
+              className={`${styles.locator_hours__button} ${styles.h6} ${
+                visibleHours[station._id] ? styles.locator_hours__button__open : ''
+              }`}
+              onClick={() => toggleHours(station._id)}
             >
               Opening hours
               <svg
@@ -74,6 +85,7 @@ export const StationsList = () => {
                 fill="none"
                 viewBox="0 0 11 8"
                 xmlns="http://www.w3.org/2000/svg"
+                className={visibleHours[station._id] ? styles.rotate : ''}
               >
                 <path
                   fillRule="evenodd"
@@ -83,7 +95,7 @@ export const StationsList = () => {
                 ></path>
               </svg>
             </Button>
-            <table className={styles.locator_hours__table}>
+            <table className={`${styles.locator_hours__table} ${visibleHours[station._id] ? styles.visible : ''}`}>
               <thead className="sr-only">
                 <tr>
                   <th>Day</th>
