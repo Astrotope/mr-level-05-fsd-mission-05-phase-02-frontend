@@ -46,3 +46,7 @@ Commit Hash: cf4e5babda5a7a40e95e463c202e627ff4cc7d04
 ## 2025-01-08T05:52:48+0000
 # halfway through UI build or frontend - rollback point.
 Commit Hash: c086325048f150d80ae54695c904102a1f14447d
+
+## 2025-01-08T19:41:58+0000
+# frontend UI build 95% complete - rollback point.
+Commit Hash: cfe9730444eeb319112dbaf08076df806f083a4b

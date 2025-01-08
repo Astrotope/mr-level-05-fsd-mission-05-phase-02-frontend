@@ -409,5 +409,6 @@ table {
   display: flex;
   flex-direction: column;
   margin: 20px;
-
+  overflow-y: auto; /* Vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal scrolling */
 }

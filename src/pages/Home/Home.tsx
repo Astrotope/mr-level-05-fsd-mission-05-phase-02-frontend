@@ -4,6 +4,7 @@ import { Button } from '@/components/Button';
 import { ContactForm } from '@/components/ContactForm/ContactForm';
 import { Map } from '@/components/Map/Map';
 import { LocationInput } from '@/components/LocationInput/LocationInput';
+import { StationsList } from '@/components/StationsList/StationsList';
 import styles from './Home.module.scss';
 
 export const Home = () => {
@@ -164,73 +165,7 @@ export const Home = () => {
 
           <Container direction="row" gap="none" wrap="nowrap" alignItems="center" justifyContent="center" className={styles.stations_overlay}>
             <Card className={styles.stations_card}>
-              <ul className={styles.locator_results__list}>
-                <li className={`${styles.locator_results__summary} ${styles.h6}`}>30 stations found</li>
-                <li className={styles.locator_result}>
-                  <h2 className={`${styles.locator_result__heading} ${styles.h4}`}>
-                    <a href="/find-a-station/station/z-ellerslie">Z Ellerslie</a>
-                  </h2>
-                  <p className={`${styles.locator_result__address} ${styles.h5}`}>301 Ellerslie-Panmure Highway, Mt Wellington, Auckland</p>
-                  <div className={styles.locator_hours}>
-                    <Button variant="locator_hours__button" size="small" className={`${styles.locator_hours__button} ${styles.h6} ${styles.locator_hours__button__open}`}>Opening
-                          hours<svg width="11" height="8.03" fill="none" viewBox="0 0 11 8" xmlns="http://www.w3.org/2000/svg">
-                              <path fillRule="evenodd" clipRule="evenodd"
-                                  d="M0.21967 1.0644C0.512563 0.771503 0.987437 0.771503 1.28033 1.0644L5.25 5.03407L9.21967 1.0644C9.51256 0.771503 9.98744 0.771503 10.2803 1.0644C10.5732 1.35729 10.5732 1.83216 10.2803 2.12506L5.25 7.15539L0.21967 2.12506C-0.0732233 1.83216 -0.0732233 1.35729 0.21967 1.0644Z"
-                                  fill="#1E196A"></path>
-                          </svg>
-                      </Button>
-                      <table className={styles.locator_hours__table}>
-                          <thead className="sr-only">
-                              <tr>
-                                  <th>Day</th>
-                                  <th>Opening hours</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__day}`}>Monday</td>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__hours}`}>5:00am - 10:00pm</td>
-                              </tr>
-                              <tr>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__day}`}>Tuesday</td>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__hours}`}>5:00am - 10:00pm</td>
-                              </tr>
-                              <tr>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__day}`}>Wednesday</td>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__hours}`}>5:00am - 10:00pm</td>
-                              </tr>
-                              <tr>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__day}`}>Thursday</td>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__hours}`}>5:00am - 10:00pm</td>
-                              </tr>
-                              <tr>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__day}`}>Friday</td>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__hours}`}>5:00am - 10:00pm</td>
-                              </tr>
-                              <tr>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__day}`}>Saturday</td>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__hours}`}>5:00am - 10:00pm</td>
-                              </tr>
-                              <tr>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__day}`}>Sunday</td>
-                                  <td className={`${styles.locator_hours__table_cell} ${styles.locator_hours__table_cell__hours}`}>5:00am - 10:00pm</td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-                  <ul className={styles.locator_result__services}>
-                      <li className={styles.locator_result__service}>Pre-order Coffee</li>
-                      <li className={styles.locator_result__service}>Pay in app</li>
-                      <li className={styles.locator_result__service}>Z Espress Coffee &amp; Fresh Food</li>
-                      <li className={styles.locator_result__service}>Trailer hire</li>
-                      <li className={styles.locator_result__service}>LPG SWAP'n'GO</li>
-                      <li className={styles.locator_result__service}>Pay at pump</li>
-                      <li className={styles.locator_result__service}>Super long hoses</li>
-                      <li className={styles.locator_result__service}>Bathrooms</li>
-                      <li className={styles.locator_result__service}>Compostable Cups</li>
-                  </ul>
-                </li>
-              </ul>
+              <StationsList />
             </Card>
           </Container>
 
