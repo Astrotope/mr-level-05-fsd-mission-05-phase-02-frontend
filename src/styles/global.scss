@@ -132,6 +132,22 @@ button a,
   text-decoration: none !important;
 }
 
+.button__circle {
+  align-items: center;
+  background-color: var(--background-color);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  min-height: 35px;
+  min-width: 35px;
+  justify-content: center;
+  margin-left: 20px;
+  overflow: hidden;
+  position: relative;
+  width: 35px;
+}
+
 // Responsive Typography
 html {
   @include respond-to('sm') {

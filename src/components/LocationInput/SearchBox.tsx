@@ -84,8 +84,8 @@ export const SearchBox = () => {
       onChange={(e) => setSearchValue(e.target.value)}
       onKeyDown={handleKeyDown}
       onBlur={() => handleSearch(searchValue)}
-      label="Enter location or station name"
       disabled={isLoading}
+      placeholder="Please enter a Location / station / Truck stop / Airstop"
       error={error || undefined}
       fullWidth
     />

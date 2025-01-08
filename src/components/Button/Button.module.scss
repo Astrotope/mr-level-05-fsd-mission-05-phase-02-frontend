@@ -2,6 +2,10 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
 
+.button:focus {
+  outline: none;
+}
+
 .button {
   @include button-base;
   padding: var(--spacing-sm) var(--spacing-md);
@@ -77,6 +81,152 @@
     width: 100%;
   }
 
+  // Style variants
+  &.nav {
+    background-color: var(--background-color-white);
+    color: var(--text-color-dark);
+    font-weight: 600;
+    font-size: 18px;
+
+
+    &:hover:not(:disabled) {
+      background-color: var(--background-color-white);
+      color: var(--primary-color);
+      opacity: 66%;
+    }
+  }
+
+  &.z-energy-variant-01 {
+    background-color: var(--primary-color-light-purple);
+    color: #2B259B;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: map.get($font-sizes, 'sm');
+    width: 139px;
+    height: 24px;
+    font-size: 12px;
+    font-weight: 600;
+
+    &:hover:not(:disabled) {
+      background-color: var(--primary-color-purple);
+      color: var(--background-color);
+    }
+
+    &.active {
+      background-color: var(--primary-color-purple);
+      color: var(--background-color);
+    }
+  }
+
+  &.z-energy-variant-02 {
+    background: var(--button-gradient, --color-orange);
+    color: var(--text-color-light);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: map.get($font-sizes, 'sm');
+    width: 139px;
+    height: 46px;
+    font-size: 20px;
+    font-weight: 700;
+
+    &:hover:not(:disabled) {
+      background: var(--button-gradient, --color-orange);
+      color: var(--text-color-light);
+      opacity: 56%;
+    }
+  }
+
+  &.z-energy-variant-03 {
+    background: var(--background-color-white);
+    color: var(--text-color-dark);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: map.get($font-sizes, 'sm');
+    width: 139px;
+    height: 46px;
+    font-size: 18px;
+    font-weight: 700;
+
+    &:hover:not(:disabled) {
+      background: var(--background-color-white);
+      color: var(--text-color-orange);
+    }
+
+  }
+
+  &.z-energy-variant-04 {
+    background: var(--button-gradient, --color-orange);
+    color: var(--text-color-light);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: map.get($font-sizes, 'sm');
+    width: 170px;
+    height: 46px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 23px;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 6px;
+
+    &:hover:not(:disabled) {
+      background: var(--button-gradient, --color-orange);
+      color: var(--text-color-light);
+      opacity: 56%;
+    }
+
+    &.button__circle {
+      align-items: center;
+      background-color: var(--background-color);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: row;
+      height: 35px;
+      min-height: 35px;
+      min-width: 35px;
+      justify-content: center;
+      margin-left: 10px;
+      overflow: hidden;
+      position: relative;
+      width: 35px;
+    }
+
+    span {
+
+      span {
+        color: var(--text-color-dark);
+      }
+
+    }
+
+  }
+
+  &.z-energy-variant-05 {
+    background: var(--search-tab-color);
+    color: var(--search-tab-color-active);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: map.get($font-sizes, 'sm');
+    width: 174px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 0px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
+    &:hover:not(:disabled) {
+      background: var(--background-color-white);
+      color: var(--text-color-orange);
+    }
+
+  }
+
+  &.use-location {
+    background: transparent;
+    color: var(--location-search);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    width: 250px;
+    height: 26px;
+    font-size: 19px;
+    font-weight: 500;
+  }
+
   // Handle nested elements
   a {
     display: inline-flex;
@@ -89,3 +239,5 @@
     align-items: center;
   }
 }
+
+

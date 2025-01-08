@@ -38,3 +38,7 @@ Commit Hash: 77011f5104a3b4c97b83f9c0dbcdc9d8c22c1ce2
 ## 2025-01-06T08:42:08+0000
 # fix TS type errors in map LocationInput components.
 Commit Hash: 3e0b2f94a333911a84cc32e02a6499c5e41e0dd3
+
+## 2025-01-07T20:08:21+0000
+# save rollback point before changing UI component code.
+Commit Hash: cf4e5babda5a7a40e95e463c202e627ff4cc7d04

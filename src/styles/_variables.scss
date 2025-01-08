@@ -5,9 +5,13 @@
   --secondary-color: #0044a3;
   --secondary-color-dark: #545b62;
   --text-color: #333;
+  --text-color-light: #FFF;
+  --text-color-dark: #000;
   --text-color-secondary: #e9ecef;
+  --text-color-orange: #ed560e;
   --accent-color: #89c106;
   --background-color: #f3f4fc;
+  --background-color: #fff;
   --card-background: #fff;
   --border-color: rgba(0, 0, 0, 0.12);
 
@@ -16,12 +20,29 @@
   --primary-color-light-orange: #FFB12E;
   --primary-color-orange-yellow: #FFCB08;
   --primary-color-light-yellow: #FFDC72;
+  --primary-color-light-purple: #E6E5F5;
+  --primary-color-purple: #6B66B8;
   --secondary-color-dark-blue: #1E196A;
   --secondary-color-blue: #2C259B;
   --secondary-color-light-blue: #D6D4EF;
-  --background-color-white: #
+  --background-color-white: #FFF;
   --background-color-gray: #f8f8f8;
   --foreground-color: #000;
+
+  --color-orange: #ed560e;
+  --color-mid-orange: #ffa13a;
+  --color-yellow: #ffcb08;
+
+  --button-gradient: linear-gradient(90deg, var(--color-orange) 0%, var(--color-mid-orange) 100%);
+  --button-gradient: linear-gradient(90deg, #ed560e 0%, #ffa13a 100%);
+
+  --background-gradient: linear-gradient(97.48deg, var(--color-orange) 9.86%, var(--color-mid-orange) 66.88%, var(--color-yellow) 89.19%);
+
+  --search-tab-color-active: #2B259B;
+  --search-tab-color-hover: #E2E1F1;
+  --search-tab-color: #FBCF9E;
+
+  --location-search: #8F340B;
 
   // Font weights
   --font-weight-button: 700;
@@ -45,8 +66,8 @@ $breakpoints: (
 );
 
 // Border
-$border-radius: 8px;
-$border-radius-lg: 12px;
+$border-radius: 6px;
+$border-radius-lg: 10px;
 
 // Typography
 $font-sizes: (

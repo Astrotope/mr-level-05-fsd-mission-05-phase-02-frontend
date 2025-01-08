@@ -96,7 +96,7 @@
   width: 100%;
 }
 
-filter_search {
+.filter_search {
   width: 100%;
 }
 
@@ -112,12 +112,36 @@ filter_search {
   width: 150px;
 }
 
-.location_input {
+.filter_search_controls_heading p {
+  color: var(--primary-color-dark-orange);
+  font-weight: 600;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.search {
+  width: 100%;
+  background: var(--background-gradient, --color-orange);
+}
+
+.search_inner {
   width: 100%;
 }
 
-.location_input_content {
-  height: 200px;
+.search_inner h1 {
+  color: var(--text-color-light);
+  font-size: 4.2em;
+  padding-top: 45px;
+}
+
+.location_input {
+  width: 100%;
+  padding-bottom: 45px;
+}
+
+.location_input_content input {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .sectionTitle {
