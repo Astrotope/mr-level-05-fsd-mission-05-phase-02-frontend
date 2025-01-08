@@ -15,6 +15,7 @@ const MapComponent = ({ className }: MapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<google.maps.Map | null>(null);
   const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
+  const locationMarkerRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(null);
   const { location } = useLocationContext();
   const { stations } = useStationsContext();
 
@@ -42,8 +43,35 @@ const MapComponent = ({ className }: MapProps) => {
   }, []);
 
   useEffect(() => {
-    if (!mapInstanceRef.current || !location) return;
-    mapInstanceRef.current.panTo(location);
+    if (!mapInstanceRef.current) return;
+
+    const currentLocation = location || AUCKLAND_CENTER;
+    mapInstanceRef.current.panTo(currentLocation);
+
+    // Clear existing location marker
+    if (locationMarkerRef.current) {
+      locationMarkerRef.current.setMap(null);
+    }
+
+    // Create location marker element
+    const markerElement = document.createElement('div');
+    markerElement.className = styles.customMarker;
+    
+    // Create and set marker image
+    const markerImage = document.createElement('img');
+    markerImage.src = '/images/location-marker.png';
+    markerImage.alt = 'Current Location';
+    markerImage.width = 32;
+    markerImage.height = 32;
+    markerElement.appendChild(markerImage);
+
+    // Create location marker
+    locationMarkerRef.current = new google.maps.marker.AdvancedMarkerElement({
+      position: currentLocation,
+      map: mapInstanceRef.current,
+      title: 'Current Location',
+      content: markerElement
+    });
   }, [location]);
 
   useEffect(() => {

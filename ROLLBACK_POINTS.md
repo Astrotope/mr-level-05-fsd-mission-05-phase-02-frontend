@@ -54,3 +54,7 @@ Commit Hash: cfe9730444eeb319112dbaf08076df806f083a4b
 ## 2025-01-08T20:23:23+0000
 # basic working location search with display of nearest three stations - rollback point.
 Commit Hash: 2735df064565704da1503a35534c85085d5696f7
+
+## 2025-01-08T20:55:01+0000
+# basic working location search with display of nearest three stations and with markers on map - rollback point.
+Commit Hash: 38590040a3433e815e28d0e4987bbfd96695d096
