@@ -10,16 +10,18 @@ export const StationsList = () => {
   const { location } = useLocationContext();
   const { stations, setStations } = useStationsContext();
 
+  const AUCKLAND_CENTER = { lat: -36.8509, lng: 174.7645 };
+
   useEffect(() => {
     const fetchStations = async () => {
-      if (!location?.lat || !location?.lng) return;
+      const currentLocation = location || AUCKLAND_CENTER;
 
       setIsLoading(true);
       setError(null);
 
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/stations/search?latitude=${location.lat}&longitude=${location.lng}&maxDistance=20000&limit=3`
+          `${import.meta.env.VITE_API_URL}/api/stations/search?latitude=${currentLocation.lat}&longitude=${currentLocation.lng}&maxDistance=20000&limit=3`
         );
 
         if (!response.ok) {

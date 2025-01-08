@@ -19,34 +19,8 @@ const MapComponent = ({ className }: MapProps) => {
   const { location } = useLocationContext();
   const { stations } = useStationsContext();
 
-  useEffect(() => {
-    const loader = new Loader({
-      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-      version: "beta",
-      libraries: ["marker"]
-    });
-
-    loader.load().then(() => {
-      if (!mapRef.current || mapInstanceRef.current) return;
-
-      const initialCenter = location
-        ? { lat: location.lat, lng: location.lng }
-        : AUCKLAND_CENTER;
-
-      mapInstanceRef.current = new google.maps.Map(mapRef.current, {
-        center: initialCenter,
-        zoom: DEFAULT_ZOOM,
-        disableDefaultUI: false,
-        mapId: 'YOUR_MAP_ID'
-      });
-    });
-  }, []);
-
-  useEffect(() => {
+  const createLocationMarker = (position: google.maps.LatLngLiteral) => {
     if (!mapInstanceRef.current) return;
-
-    const currentLocation = location || AUCKLAND_CENTER;
-    mapInstanceRef.current.panTo(currentLocation);
 
     // Clear existing location marker
     if (locationMarkerRef.current) {
@@ -67,11 +41,45 @@ const MapComponent = ({ className }: MapProps) => {
 
     // Create location marker
     locationMarkerRef.current = new google.maps.marker.AdvancedMarkerElement({
-      position: currentLocation,
+      position,
       map: mapInstanceRef.current,
       title: 'Current Location',
       content: markerElement
     });
+  };
+
+  useEffect(() => {
+    const loader = new Loader({
+      apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+      version: "beta",
+      libraries: ["marker"]
+    });
+
+    loader.load().then(() => {
+      if (!mapRef.current || mapInstanceRef.current) return;
+
+      const initialCenter = location
+        ? { lat: location.lat, lng: location.lng }
+        : AUCKLAND_CENTER;
+
+      mapInstanceRef.current = new google.maps.Map(mapRef.current, {
+        center: initialCenter,
+        zoom: DEFAULT_ZOOM,
+        disableDefaultUI: false,
+        mapId: 'YOUR_MAP_ID'
+      });
+
+      // Create initial location marker
+      createLocationMarker(initialCenter);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!mapInstanceRef.current) return;
+
+    const currentLocation = location || AUCKLAND_CENTER;
+    mapInstanceRef.current.panTo(currentLocation);
+    createLocationMarker(currentLocation);
   }, [location]);
 
   useEffect(() => {
