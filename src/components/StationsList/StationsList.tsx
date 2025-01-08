@@ -115,6 +115,19 @@ export const StationsList = () => {
               </li>
             ))}
           </ul>
+          {station.pricing && (
+            <div className={styles.locator_result__pricing}>
+              <h3 className={`${styles.h5}`}>Fuel Prices</h3>
+              <ul className={styles.locator_result__prices}>
+                {Object.entries(station.pricing).map(([fuel, price]) => (
+                  <li key={fuel} className={styles.locator_result__price}>
+                    <span className={styles.locator_result__fuel_type}>{fuel}</span>
+                    <span className={styles.locator_result__fuel_price}>${price}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </li>
       ))}
     </ul>

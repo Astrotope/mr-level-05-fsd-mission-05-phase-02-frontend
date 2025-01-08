@@ -20,6 +20,12 @@ export interface Station {
     name: string;
   }>;
   link: string;
+  pricing: {
+    'ZX premium'?: string;
+    'Z91 unleaded'?: string;
+    'Z diesel'?: string;
+    [key: string]: string | undefined;
+  };
 }
 
 interface StationsContextType {
