@@ -9,7 +9,7 @@ interface MapProps {
 }
 
 const AUCKLAND_CENTER = { lat: -36.8509, lng: 174.7645 };
-const DEFAULT_ZOOM = 11;
+const DEFAULT_ZOOM = 12;
 
 const MapComponent = ({ className }: MapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -65,7 +65,12 @@ const MapComponent = ({ className }: MapProps) => {
       mapInstanceRef.current = new google.maps.Map(mapRef.current, {
         center: initialCenter,
         zoom: DEFAULT_ZOOM,
-        disableDefaultUI: false,
+        disableDefaultUI: true,
+        zoomControl: true,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_TOP
+        },
+        controlSize: 20,
         mapId: 'YOUR_MAP_ID'
       });
 

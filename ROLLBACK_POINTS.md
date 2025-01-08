@@ -74,3 +74,7 @@ Commit Hash: 9419ceaa2eb5405ac6057679f1965a676cfd6b39
 ## 2025-01-08T22:12:29+0000
 # added display toggle visiblity of opening hours behavior to opening hours button in stations list. - rollback point.
 Commit Hash: e89c758a4477c4b4b4afbcd03520e9c9344d4aa8
+
+## 2025-01-08T22:48:48+0000
+# added display of prices with station markers on google map. - rollback point.
+Commit Hash: c458f8405a8ee7a73294fbc599abc7a435ca9860
