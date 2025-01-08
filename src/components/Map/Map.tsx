@@ -105,6 +105,36 @@ const MapComponent = ({ className }: MapProps) => {
       markerImage.height = 32;
       markerElement.appendChild(markerImage);
 
+      // Create prices container
+      if (station.pricing) {
+        const pricesContainer = document.createElement('div');
+        pricesContainer.style.cssText = `
+          background: white;
+          padding: 8px;
+          border-radius: 4px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+          margin-top: 4px;
+          font-family: sans-serif;
+          font-size: 12px;
+        `;
+
+        Object.entries(station.pricing).forEach(([fuel, price]) => {
+          const priceElement = document.createElement('div');
+          priceElement.style.cssText = `
+            display: flex;
+            justify-content: space-between;
+            margin: 2px 0;
+          `;
+          priceElement.innerHTML = `
+            <span style="color: #1E196A; margin-right: 8px;">${fuel}</span>
+            <span style="color: #ED550E; font-weight: bold;">$${price}</span>
+          `;
+          pricesContainer.appendChild(priceElement);
+        });
+
+        markerElement.appendChild(pricesContainer);
+      }
+
       // Create marker
       const marker = new google.maps.marker.AdvancedMarkerElement({
         position: { lat, lng },

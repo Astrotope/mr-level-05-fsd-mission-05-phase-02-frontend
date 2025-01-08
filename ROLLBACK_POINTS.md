@@ -70,3 +70,7 @@ Commit Hash: 992f4547b0891179809348a606d2ea0c7cf0b080
 ## 2025-01-08T21:54:43+0000
 # basic working location search with display of nearest three stations and with markers on map, including a marker for the location in LocationContext. Also added default station list display for default location. Also added prices display in station list. - rollback point.
 Commit Hash: 9419ceaa2eb5405ac6057679f1965a676cfd6b39
+
+## 2025-01-08T22:12:29+0000
+# added display toggle visiblity of opening hours behavior to opening hours button in stations list. - rollback point.
+Commit Hash: e89c758a4477c4b4b4afbcd03520e9c9344d4aa8
