@@ -2,32 +2,13 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/Button/Button';
 import styles from './StationsList.module.scss';
 import { useLocationContext } from '@/contexts/LocationContext';
-
-interface Station {
-  _id: string;
-  name: string;
-  type: string;
-  location: {
-    address: string;
-    suburb: string;
-    city: string;
-  };
-  opening_hours: Array<{
-    day: string;
-    hours: string;
-    current: boolean;
-  }>;
-  services: Array<{
-    name: string;
-  }>;
-  link: string;
-}
+import { useStationsContext, Station } from '@/contexts/StationsContext';
 
 export const StationsList = () => {
-  const [stations, setStations] = useState<Station[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { location } = useLocationContext();
+  const { stations, setStations } = useStationsContext();
 
   useEffect(() => {
     const fetchStations = async () => {
@@ -55,7 +36,7 @@ export const StationsList = () => {
     };
 
     fetchStations();
-  }, [location]);
+  }, [location, setStations]);
 
   if (isLoading) {
     return <div>Loading stations...</div>;

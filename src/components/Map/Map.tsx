@@ -1,23 +1,22 @@
 import { useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
 import { useLocationContext } from '../../contexts/LocationContext';
+import { useStationsContext } from '../../contexts/StationsContext';
+import styles from './Map.module.scss';
 
 interface MapProps {
   className?: string;
 }
 
-const containerStyle = {
-  width: '100%',
-  height: '1000px'
-};
+const AUCKLAND_CENTER = { lat: -36.8509, lng: 174.7645 };
+const DEFAULT_ZOOM = 11;
 
-const defaultCenter = { lat: -36.8485, lng: 174.7633 }; // Default to Auckland
-
-export const Map = ({ className }: MapProps) => {
+const MapComponent = ({ className }: MapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<google.maps.Map | null>(null);
-  const markerRef = useRef<google.maps.marker.AdvancedMarkerElement | null>(null);
+  const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
   const { location } = useLocationContext();
+  const { stations } = useStationsContext();
 
   useEffect(() => {
     const loader = new Loader({
@@ -27,69 +26,66 @@ export const Map = ({ className }: MapProps) => {
     });
 
     loader.load().then(() => {
-      if (mapRef.current && !mapInstanceRef.current) {
-        const newMap = new google.maps.Map(mapRef.current, {
-          center: location?.lat ? location : defaultCenter,
-          zoom: 12,
-          disableDefaultUI: true,
-          zoomControl: true,
-          zoomControlOptions: {
-            position: google.maps.ControlPosition.LEFT_TOP
-          },
-          controlSize: 20,
-          mapId: "YOUR_MAP_ID"  // Required for Advanced Markers
-        });
+      if (!mapRef.current || mapInstanceRef.current) return;
 
-        mapInstanceRef.current = newMap;
+      const initialCenter = location
+        ? { lat: location.lat, lng: location.lng }
+        : AUCKLAND_CENTER;
 
-        const markerContent = document.createElement("div");
-        markerContent.style.width = "50px";
-        markerContent.style.height = "50px";
-        markerContent.style.backgroundImage = "url(/images/location-marker.png)";
-        markerContent.style.backgroundSize = "contain";
-
-        if (location?.lat) {
-          markerRef.current = new google.maps.marker.AdvancedMarkerElement({
-            position: location,
-            map: newMap,
-            content: markerContent,
-            title: location.address
-          });
-        }
-      }
+      mapInstanceRef.current = new google.maps.Map(mapRef.current, {
+        center: initialCenter,
+        zoom: DEFAULT_ZOOM,
+        disableDefaultUI: false,
+        mapId: 'YOUR_MAP_ID'
+      });
     });
   }, []);
 
-  // Update map when location changes
   useEffect(() => {
-    if (mapInstanceRef.current && location?.lat) {
-      mapInstanceRef.current.panTo(location);
-      
-      const markerContent = document.createElement("div");
-      markerContent.style.width = "50px";
-      markerContent.style.height = "50px";
-      markerContent.style.backgroundImage = "url(/images/location-marker.png)";
-      markerContent.style.backgroundSize = "cover";
-
-      // Update or create marker
-      if (markerRef.current) {
-        markerRef.current.position = location;
-      } else {
-        markerRef.current = new google.maps.marker.AdvancedMarkerElement({
-          position: location,
-          map: mapInstanceRef.current,
-          content: markerContent,
-          title: location.address
-        });
-      }
-    }
+    if (!mapInstanceRef.current || !location) return;
+    mapInstanceRef.current.panTo(location);
   }, [location]);
 
+  useEffect(() => {
+    if (!mapInstanceRef.current) return;
+
+    // Clear existing markers
+    markersRef.current.forEach(marker => marker.setMap(null));
+    markersRef.current = [];
+
+    // Add new markers for each station
+    stations.forEach(station => {
+      const [lng, lat] = station.location.coordinates;
+      
+      // Create marker element
+      const markerElement = document.createElement('div');
+      markerElement.className = styles.customMarker;
+      
+      // Create and set marker image
+      const markerImage = document.createElement('img');
+      markerImage.src = '/images/marker.png';
+      markerImage.alt = station.name;
+      markerImage.width = 32;
+      markerImage.height = 32;
+      markerElement.appendChild(markerImage);
+
+      // Create marker
+      const marker = new google.maps.marker.AdvancedMarkerElement({
+        position: { lat, lng },
+        map: mapInstanceRef.current,
+        title: station.name,
+        content: markerElement
+      });
+
+      markersRef.current.push(marker);
+    });
+  }, [stations]);
+
+  return <div ref={mapRef} className={`${styles.map} ${className || ''}`} />;
+};
+
+export const Map = ({ className }: MapProps) => {
   return (
-    <div 
-      ref={mapRef} 
-      className={className}
-      style={containerStyle}
-    />
+    <MapComponent className={className} />
   );
 };
