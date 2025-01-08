@@ -82,3 +82,7 @@ Commit Hash: c458f8405a8ee7a73294fbc599abc7a435ca9860
 ## 2025-01-08T22:59:32+0000
 # added back Google Map UI custom styling. - rollback point.
 Commit Hash: f704158a298fd649abad12324d9ac66908b8e0a5
+
+## 2025-01-08T23:27:11+0000
+# added colored markers for prices to google map. - rollback point.
+Commit Hash: 02ca557e4cf42c7ae71417dd622e32296641c037

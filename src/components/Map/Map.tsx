@@ -129,27 +129,29 @@ const MapComponent = ({ className }: MapProps) => {
         `;
 
         const colors = ['#ED550E', '#F8852C', '#FFB12E', '#2C259B'];
-        let colorIndex = 0;
+        const fuels = ['ZX premium', 'Z91 unleaded', 'Z diesel', 'EV charging'];
 
         Object.entries(station.pricing).forEach(([fuel, price]) => {
-          const priceCircle = document.createElement('div');
-          priceCircle.style.cssText = `
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: ${colors[colorIndex]};
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-family: sans-serif;
-            font-size: 12px;
-            font-weight: bold;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-          `;
-          priceCircle.innerHTML = `$${price}`;
-          pricesContainer.appendChild(priceCircle);
-          colorIndex = (colorIndex + 1) % colors.length;
+          const colorIndex = fuels.indexOf(fuel);
+          if (colorIndex !== -1) {
+            const priceCircle = document.createElement('div');
+            priceCircle.style.cssText = `
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background-color: ${colors[colorIndex]};
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: white;
+              font-family: sans-serif;
+              font-size: 12px;
+              font-weight: bold;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            `;
+            priceCircle.innerHTML = `$${price}`;
+            pricesContainer.appendChild(priceCircle);
+          }
         });
 
         markerElement.appendChild(pricesContainer);
