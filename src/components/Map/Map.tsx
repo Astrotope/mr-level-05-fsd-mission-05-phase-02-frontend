@@ -35,8 +35,8 @@ const MapComponent = ({ className }: MapProps) => {
     const markerImage = document.createElement('img');
     markerImage.src = '/images/location-marker.png';
     markerImage.alt = 'Current Location';
-    markerImage.width = 32;
-    markerImage.height = 32;
+    markerImage.width = 46;
+    markerImage.height = 46;
     markerElement.appendChild(markerImage);
 
     // Create location marker
@@ -101,40 +101,55 @@ const MapComponent = ({ className }: MapProps) => {
       // Create marker element
       const markerElement = document.createElement('div');
       markerElement.className = styles.customMarker;
+      markerElement.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      `;
       
       // Create and set marker image
       const markerImage = document.createElement('img');
       markerImage.src = '/images/marker.png';
       markerImage.alt = station.name;
-      markerImage.width = 32;
-      markerImage.height = 32;
+      markerImage.width = 46;
+      markerImage.height = 46;
       markerElement.appendChild(markerImage);
 
       // Create prices container
       if (station.pricing) {
         const pricesContainer = document.createElement('div');
         pricesContainer.style.cssText = `
-          background: white;
-          padding: 8px;
-          border-radius: 4px;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-          margin-top: 4px;
-          font-family: sans-serif;
-          font-size: 12px;
+          display: flex;
+          gap: 8px;
+          margin-top: 8px;
+          justify-content: center;
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
         `;
 
+        const colors = ['#ED550E', '#F8852C', '#FFB12E', '#2C259B'];
+        let colorIndex = 0;
+
         Object.entries(station.pricing).forEach(([fuel, price]) => {
-          const priceElement = document.createElement('div');
-          priceElement.style.cssText = `
+          const priceCircle = document.createElement('div');
+          priceCircle.style.cssText = `
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: ${colors[colorIndex]};
             display: flex;
-            justify-content: space-between;
-            margin: 2px 0;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
           `;
-          priceElement.innerHTML = `
-            <span style="color: #1E196A; margin-right: 8px;">${fuel}</span>
-            <span style="color: #ED550E; font-weight: bold;">$${price}</span>
-          `;
-          pricesContainer.appendChild(priceElement);
+          priceCircle.innerHTML = `$${price}`;
+          pricesContainer.appendChild(priceCircle);
+          colorIndex = (colorIndex + 1) % colors.length;
         });
 
         markerElement.appendChild(pricesContainer);
