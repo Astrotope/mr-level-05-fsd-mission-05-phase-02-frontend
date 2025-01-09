@@ -132,7 +132,25 @@ const MapComponent = ({ className }: MapProps) => {
                   font-size: 12px;
                   font-weight: bold;
                   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                  transition: all 0.2s ease-in-out;
+                  cursor: pointer;
+                  position: relative;
+                  z-index: 1;
                 `;
+
+                // Add hover effect
+                priceCircle.addEventListener('mouseenter', () => {
+                  priceCircle.style.transform = 'scale(1.1)';
+                  priceCircle.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+                  priceCircle.style.zIndex = '1000';
+                });
+
+                priceCircle.addEventListener('mouseleave', () => {
+                  priceCircle.style.transform = 'scale(1)';
+                  priceCircle.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
+                  priceCircle.style.zIndex = '1';
+                });
+
                 priceCircle.innerHTML = `$${price}`;
                 pricesContainer.appendChild(priceCircle);
               }
@@ -224,7 +242,25 @@ const MapComponent = ({ className }: MapProps) => {
               font-size: 12px;
               font-weight: bold;
               box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+              transition: all 0.2s ease-in-out;
+              cursor: pointer;
+              position: relative;
+              z-index: 1;
             `;
+
+            // Add hover effect
+            priceCircle.addEventListener('mouseenter', () => {
+              priceCircle.style.transform = 'scale(1.1)';
+              priceCircle.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+              priceCircle.style.zIndex = '1000';
+            });
+
+            priceCircle.addEventListener('mouseleave', () => {
+              priceCircle.style.transform = 'scale(1)';
+              priceCircle.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
+              priceCircle.style.zIndex = '1';
+            });
+
             priceCircle.innerHTML = `$${price}`;
             pricesContainer.appendChild(priceCircle);
           }
