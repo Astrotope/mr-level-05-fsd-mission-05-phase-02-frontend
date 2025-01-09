@@ -76,6 +76,82 @@ const MapComponent = ({ className }: MapProps) => {
 
       // Create initial location marker
       createLocationMarker(initialCenter);
+
+      // Add initial station markers if they exist
+      if (stations && stations.length > 0) {
+        stations.forEach(station => {
+          const [lng, lat] = station.location.coordinates;
+          
+          // Create marker element
+          const markerElement = document.createElement('div');
+          markerElement.className = styles.customMarker;
+          markerElement.style.cssText = `
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          `;
+          
+          // Create and set marker image
+          const markerImage = document.createElement('img');
+          markerImage.src = '/images/marker.png';
+          markerImage.alt = station.name;
+          markerImage.width = 46;
+          markerImage.height = 46;
+          markerElement.appendChild(markerImage);
+
+          // Create prices container
+          if (station.pricing) {
+            const pricesContainer = document.createElement('div');
+            pricesContainer.style.cssText = `
+              display: flex;
+              gap: 8px;
+              margin-top: 8px;
+              justify-content: center;
+              position: relative;
+              left: 50%;
+              transform: translateX(-50%);
+            `;
+
+            const colors = ['#ED550E', '#F8852C', '#FFB12E', '#2C259B'];
+            const fuels = ['ZX premium', 'Z91 unleaded', 'Z diesel', 'EV charging'];
+
+            Object.entries(station.pricing).forEach(([fuel, price]) => {
+              const colorIndex = fuels.indexOf(fuel);
+              if (colorIndex !== -1) {
+                const priceCircle = document.createElement('div');
+                priceCircle.style.cssText = `
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background-color: ${colors[colorIndex]};
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: white;
+                  font-family: sans-serif;
+                  font-size: 12px;
+                  font-weight: bold;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                `;
+                priceCircle.innerHTML = `$${price}`;
+                pricesContainer.appendChild(priceCircle);
+              }
+            });
+
+            markerElement.appendChild(pricesContainer);
+          }
+
+          // Create marker
+          const marker = new google.maps.marker.AdvancedMarkerElement({
+            position: { lat, lng },
+            map: mapInstanceRef.current,
+            title: station.name,
+            content: markerElement
+          });
+
+          markersRef.current.push(marker);
+        });
+      }
     });
   }, []);
 

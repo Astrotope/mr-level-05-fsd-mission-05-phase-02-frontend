@@ -86,3 +86,7 @@ Commit Hash: f704158a298fd649abad12324d9ac66908b8e0a5
 ## 2025-01-08T23:27:11+0000
 # added colored markers for prices to google map. - rollback point.
 Commit Hash: 02ca557e4cf42c7ae71417dd622e32296641c037
+
+## 2025-01-08T23:51:20+0000
+# aligned coloured price markers with colors in legend for fuel types. - rollback point.
+Commit Hash: d027c095273ceb4d9ff051fd44c9481297203ec8
