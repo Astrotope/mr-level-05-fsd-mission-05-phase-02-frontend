@@ -3,6 +3,8 @@
 ## Overview
 The Z Energy Station Finder is a modern web application built with React 18.3, TypeScript, and Vite that helps users locate Z Energy stations across New Zealand. It provides an interactive map interface with real-time station information, filtering capabilities, and detailed station information.
 
+![Z-Energy-Redesign](https://github.com/user-attachments/assets/0b85af84-e0da-4671-a889-d37d738a255e)
+
 ## Features
 - Interactive Google Maps integration with custom station markers
 - Real-time station search and filtering
